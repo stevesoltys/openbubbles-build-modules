@@ -10,5 +10,5 @@ source.
 While you can build OpenBubbles without these modules, you will not be able to sign in using Mac hardware information.
 
 This project depends on a shared library
-from [one of the x86_64 OpenBubbles release builds](https://github.com/OpenBubbles/openbubbles-app/releases/tag/v1.15.0%2B137).
+from [one of the x86_64 OpenBubbles release builds](https://github.com/OpenBubbles/openbubbles-app/releases/tag/v1.15.0%2B136).
 It calls the functions OpenBubbles normally calls in a release build to generate the signed validation data.

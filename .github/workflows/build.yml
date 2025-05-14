@@ -1,0 +1,26 @@
+on: [ push, pull_request ]
+name: Build
+jobs:
+  build:
+    name: Extract FairPlay certs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Fetch OpenBubbles Release
+        run: |
+          wget https://github.com/OpenBubbles/openbubbles-app/releases/download/v1.15.0%2B136/bluebubbles-linux-x86_64.tar
+          tar -xvf bluebubbles-linux-x86_64.tar
+          cp lib/librust_lib_bluebubbles.so ./openbubbles.so
+          echo "f47fbd299bf5c83449bf6485a2c00c0f059d0e059646e20c64111bc5fac84b2a  openbubbles.so" | sha256sum -c
+
+      - name: Extract and validate FairPlay certs
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --package fairplay-certs --bin fairplay-certs

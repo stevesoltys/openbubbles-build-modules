@@ -11,3 +11,5 @@ lib/
 
 ## OS Specific
 .DS_Store
+
+openbubbles.so

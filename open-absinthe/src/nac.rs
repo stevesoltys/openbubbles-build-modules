@@ -92,7 +92,7 @@ impl ValidationCtx {
             .args(&[
                 "-E".to_string(),
                 "LD_LIBRARY_PATH=.".to_string(),
-                "./rust-test".to_string(),
+                "./macos-validation-data".to_string(),
             ])
             .env("LD_LIBRARY_PATH", ".")
             .current_dir(app_native_library_directory)
